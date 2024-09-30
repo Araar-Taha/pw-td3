@@ -1,3 +1,6 @@
+import { v4 as uuidv4 } from 'uuid';
+import validator from 'validator';
+
 export type Planet = {
     name: string;
     distanceFromEarth: number; 
@@ -18,12 +21,22 @@ export type Planet = {
     public status: StarshipStatus;
     public id: string;
   
-    constructor(ref: string, speed: number, status: StarshipStatus = StarshipStatus.PARKED, id: string) {
+    constructor(ref: string, speed: number, id?: string) {
       this.ref = ref;
       this.speed = speed;
-      this.status = status;
-      this.id = id;
+      this.status = StarshipStatus.PARKED;
+       
+      if (id && validator.isUUID(id, 4)) {
+        this.id = id;
+      } else if (!id) {
+        this.id = uuidv4();
+      } else {
+        throw new Error("L'ID fourni n'est pas un UUID valide.");
+      }
+    
     }
+
+    
   
     public takeOff() {
       if (this.status !== StarshipStatus.PARKED) {
