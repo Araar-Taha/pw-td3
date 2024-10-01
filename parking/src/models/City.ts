@@ -1,11 +1,12 @@
 import { GPS } from "../types/GPS";
 import { toSlug } from "../utils/toSlug";
+import {v4 as uuidv4} from 'uuid';
 
 export class City {
     id : number;
     name : string;
     slug : string;
-    parkingsIds : number[];
+    parkingsIds : string[];
     country : string;
     location : GPS;
 
@@ -19,3 +20,4 @@ export class City {
     }
 
 }
+
