@@ -3,19 +3,20 @@ import validator from "validator";
 import { isValidGPS } from "../utils/isValidGPS";
 import {v4 as uuidv4} from 'uuid';
 import { Spot } from './Spot';
+import { generateRandomNumberId } from "../utils/generateRandomNumberId";
 
 export class Parking {
-    id : string;
+    id : number;
     name : string;
     city_id : number;
     location : GPS; //must verify
     numberOfSpots : number; //must verify
     opened : boolean;
     hourlyRate : number; //must verify
-    parkIds : string[];
+    parkIds : number[];
 
-    constructor (name:string,city_id : number , location : GPS , numberOfSpots : number , hourlyRate : number ){
-        this.id = uuidv4();
+    constructor (id : number,name:string,city_id : number , location : GPS , numberOfSpots : number , hourlyRate : number ){
+        this.id = id;
         this.name = name;
         this.city_id = city_id;
         if (isValidGPS(location)){
@@ -36,7 +37,7 @@ export class Parking {
 
         this.parkIds = [];
         for (let i = 0; i < numberOfSpots; i++) {
-            this.parkIds.push(new Spot(this.id).id);
+            this.parkIds.push(new Spot(generateRandomNumberId(),this.id).id);
         }  
     }
 

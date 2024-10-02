@@ -1,11 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export class Spot {
-    id: string;
-    parkingId: string;
+    id: number;
+    parkingId: number;
 
-    constructor( parkingId: string) {
-        this.id = uuidv4() ;
+    constructor( id : number ,parkingId: number) {
+        this.id = id ;
         this.parkingId = parkingId;
     }
 }

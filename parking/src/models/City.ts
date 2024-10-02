@@ -6,7 +6,7 @@ export class City {
     id : number;
     name : string;
     slug : string;
-    parkingsIds : string[];
+    parkingsIds : number[];
     country : string;
     location : GPS;
 
