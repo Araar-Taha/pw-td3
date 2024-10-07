@@ -8,7 +8,7 @@ const factory = createFactory();
 
 
 const ReadAllCitiesControler = factory.createHandlers((c) => {
-    const htmlView = ReadAllCitiesView(lists.cities)
+    const htmlView = ReadAllCitiesView({cities : lists.cities})
     return c.html(htmlView); // Return cities as JSON response
   });
 
