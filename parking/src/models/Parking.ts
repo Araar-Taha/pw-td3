@@ -10,7 +10,7 @@ export class Parking {
     name : string;
     city_id : number;
     location : GPS; //must verify
-    numberOfSpots : number; //must verify
+    numberOfPlaces : number; //must verify
     opened : boolean;
     hourlyRate : number; //must verify
     parkIds : number[];
@@ -25,7 +25,7 @@ export class Parking {
             throw new Error("Invalid GPS coordinates");
         }
         
-        this.numberOfSpots = numberOfSpots;
+        this.numberOfPlaces = numberOfSpots;
         this.opened = false;
 
 

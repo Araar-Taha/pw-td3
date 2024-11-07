@@ -16,8 +16,8 @@ const ReadAllParkingsView = ({ parkings, cities }: ReadAllParkingsViewProps) => 
     const parkingsList = parkings.map(parking => html`
     <li>
       <h2>${parking.name}</h2>
-      <p>Location: ${parking.location.latitude}, ${parking.location.longitude}</p>
-      <p>Spots: ${parking.numberOfSpots}</p>
+      <p>Location: ${parking.location}</p>
+      <p>Spots: ${parking.numberOfPlaces}</p>
       <p>Hourly Rate: $${parking.hourlyRate}</p>
       <a href="/parkings/${toSlug(parking.name)}">Parking Details</a>
     </li>

@@ -23,8 +23,7 @@ model City {
 model Parking {
   id             Int     @id @default(autoincrement())
   name           String  @unique
-  latitude       Float?
-  longitude      Float?
+  location String?
   numberOfPlaces Int
   opened         Boolean @default(true)
   hourlyRate     Float
@@ -34,6 +33,7 @@ model Parking {
   spots  Spot[]
 
   @@map("parkings")
+  
 }
 
 model Spot {
