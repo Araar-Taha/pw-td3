@@ -18,7 +18,7 @@ parkings : Array<Parking>;
 //et définition du composant fonctionnel ReadAllCitiesView
 
 const ReadAllCitiesView =
-({ cities , parkings }: ReadAllCitiesViewProps) =>{
+({cities}: ReadAllCitiesViewProps) =>{
     const citiesList = cities.map(city => html`
     <li>
       <h2>${city.name}</h2>

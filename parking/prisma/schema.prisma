@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model City {
+  id       Int      @id @default(autoincrement())
+  name     String   @unique
+  slug     String   @unique
+  location String?
+  country  String
+
+  parkings Parking[] // Reverse relation to `Parking`
+}
+
+model Parking {
+  id             Int     @id @default(autoincrement())
+  name           String  @unique
+  latitude       Float?
+  longitude      Float?
+  numberOfPlaces Int
+  opened         Boolean @default(true)
+  hourlyRate     Float
+  cityId         Int
+
+  city   City   @relation(fields: [cityId], references: [id])
+  spots  Spot[]
+
+  @@map("parkings")
+}
+
+model Spot {
+  id        Int      @id @default(autoincrement())
+  parkingId Int
+
+  parking   Parking @relation(fields: [parkingId], references: [id])
+  parks     Park[]
+
+  @@map("spots")
+}
+
+model Park {
+  id                  String  @id
+  startedAt           DateTime
+  endedAt             DateTime?
+  vehicleNumberPlate  String?
+  spotId              Int
+  price               Float   @default(0)
+
+  spot  Spot @relation(fields: [spotId], references: [id])
+
+  @@map("parks")
+}
+
