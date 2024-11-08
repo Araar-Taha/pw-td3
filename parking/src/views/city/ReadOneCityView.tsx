@@ -21,7 +21,7 @@ const ReadOneCityView =
         pageTitle: 'City detail',
         children: html`
           <p>Country: ${city.country}</p>
-          <p>GPS: Latitude ${city.location.latitude} <br> Longitude ${city.location.longitude}</p>
+          <p>GPS: Latitude,Longitude ${city.location}</p>
             
         `,
       });

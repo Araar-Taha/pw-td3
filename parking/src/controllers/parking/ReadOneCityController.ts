@@ -1,14 +1,15 @@
 import { createFactory } from 'hono/factory'
 import ReadOneCityView from '../../views/city/ReadOneCityView'
-import lists  from '../../data/staticDatabase';
+// import lists  from '../../data/staticDatabase';
 import { City } from '../../models/City';
 import { toSlug } from '../../utils/toSlug';
+import { prisma } from '../..';
 
 
 const factory = createFactory()
-const ReadOneCityController = factory.createHandlers((c) => {
+const ReadOneCityController = factory.createHandlers(async (c) => {
     const citySlug = c.req.param('slug') 
-    const cities = lists.cities
+    const cities = await prisma.city.findMany();
     const OneCity = cities.find(city => toSlug(city.name) === citySlug);
     if (OneCity) {
         // If a city is found, render the view with the city data
