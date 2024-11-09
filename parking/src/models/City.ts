@@ -10,11 +10,15 @@ export class City {
     country : string;
     location : GPS;
 
-    constructor(id:number , name : string , country : string , location : GPS){
+    constructor(id:number , name : string , country : string , location : GPS , parkings? : number[]){
         this.id = id;
         this.name = name;
         this.slug = toSlug(name);
-        this.parkingsIds = [];
+        if (parkings){
+            this.parkingsIds = parkings
+        }else{
+            this.parkingsIds = [];
+        }
         this.country = country;
         this.location = location;
     }

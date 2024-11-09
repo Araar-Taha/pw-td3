@@ -11,14 +11,13 @@ import { toSlug } from "../../utils/toSlug";
 
 type ReadAllCitiesViewProps = {
 cities: Array<City>;
-parkings : Array<Parking>;
 }
 
 //utilisation du composant Layout en tant que base
 //et définition du composant fonctionnel ReadAllCitiesView
 
 const ReadAllCitiesView =
-({cities}: ReadAllCitiesViewProps) =>{
+({cities}: ReadAllCitiesViewProps ) =>{
     const citiesList = cities.map(city => html`
     <li>
       <h2>${city.name}</h2>

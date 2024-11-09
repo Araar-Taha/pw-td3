@@ -14,7 +14,8 @@ model City {
   id       Int      @id @default(autoincrement())
   name     String   @unique
   slug     String   @unique
-  location String?
+  latitude       Float @default(1.500000)
+  longitude      Float @default(1.500000) 
   country  String
 
   parkings Parking[] // Reverse relation to `Parking`
@@ -23,7 +24,8 @@ model City {
 model Parking {
   id             Int     @id @default(autoincrement())
   name           String  @unique
-  location String?
+  latitude       Float   @default(1.500000)
+  longitude      Float   @default(1.500000)
   numberOfPlaces Int
   opened         Boolean @default(true)
   hourlyRate     Float

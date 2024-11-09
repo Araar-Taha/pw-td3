@@ -13,7 +13,35 @@ const factory = createFactory();
 const ReadAllCitiesControler = factory.createHandlers(async (c) => {
   try {
     
-    const cities = await prisma.city.findMany();
+    const citiesData = await prisma.city.findMany();
+    const parkingsData = await prisma.parking.findMany({
+      select:{
+        id: true,
+        cityId: true
+      },
+    })
+
+    // Grouping parking by city ids
+    const parkingsByCityId: Record<number, number[]> = {};
+    parkingsData.forEach((parking) => {
+    if (!parkingsByCityId[parking.cityId]) {
+    parkingsByCityId[parking.cityId] = [];
+    }
+    parkingsByCityId[parking.cityId].push(parking.id);
+    });
+
+    const cities = citiesData.map((city) => {
+      const location: GPS = {
+        latitude: city.latitude,
+        longitude: city.longitude,
+      };
+
+      const parkingsIds = parkingsByCityId[city.id] || [];
+
+      return new City(city.id, city.name, city.country, location, parkingsIds);
+    });
+    
+
     
     
     const htmlView = ReadAllCitiesView({cities})

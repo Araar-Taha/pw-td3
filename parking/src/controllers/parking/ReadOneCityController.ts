@@ -8,9 +8,13 @@ import { prisma } from '../..';
 
 const factory = createFactory()
 const ReadOneCityController = factory.createHandlers(async (c) => {
+    
     const citySlug = c.req.param('slug') 
     const cities = await prisma.city.findMany();
     const OneCity = cities.find(city => toSlug(city.name) === citySlug);
+    
+    
+
     if (OneCity) {
         // If a city is found, render the view with the city data
         const CityPage = ReadOneCityView({ city: OneCity });
