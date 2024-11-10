@@ -24,41 +24,47 @@ app.get('/cities',...ReadAllCitiesControler )
 app.get('/cities/:slug', ...ReadOneCityController)
 
 app.get('/parkings', ...ReadAllParkingsController);
-app.get('/parkings/:slug', ...ReadOneParkingController);
+app.get('/parkings/:id', ...ReadOneParkingController);
 
-app.post('/createcities', async (c) => {
-  const { name,location, country } = await c.req.json()
-  
-  const slug  = toSlug(name)
-  const city = await prisma.city.create({
-    data: { name, slug, location, country },
-  })
-  return c.json(city)
-})
 
-app.post('/addparking', async (c) => {
-    try {
-      // Extract the request data
-      const { name, location, numberOfPlaces, hourlyRate, cityId } = await c.req.json()
+
+
+
+
+
+// Temp use endpoints
+// app.post('/createcities', async (c) => {
+//   const { name,location, country } = await c.req.json()
+//   const slug  = toSlug(name)
+//   const city = await prisma.city.create({
+//     data: { name, slug, location, country },
+//   })
+//   return c.json(city)
+// })
+
+// app.post('/addparking', async (c) => {
+//     try {
+//       // Extract the request data
+//       const { name, location, numberOfPlaces, hourlyRate, cityId } = await c.req.json()
   
-      // Create a new parking entry
-      const parking = await prisma.parking.create({
-        data: {
-          name,
-          location,
-          numberOfPlaces,
-          hourlyRate,
-          cityId,
-        },
-      })
+//       // Create a new parking entry
+//       const parking = await prisma.parking.create({
+//         data: {
+//           name,
+//           location,
+//           numberOfPlaces,
+//           hourlyRate,
+//           cityId,
+//         },
+//       })
   
-      return c.json(parking)
-    } catch (error) {
-      // Return an error response if something goes wrong
-      console.error(error)
-      return c.json({ error: 'Failed to create parking' }, 500)
-    }
-  })
+//       return c.json(parking)
+//     } catch (error) {
+//       // Return an error response if something goes wrong
+//       console.error(error)
+//       return c.json({ error: 'Failed to create parking' }, 500)
+//     }
+//   })
 
 
 

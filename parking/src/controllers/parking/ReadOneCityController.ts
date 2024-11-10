@@ -10,11 +10,9 @@ const factory = createFactory();
 
 const ReadOneCityController = factory.createHandlers(async (c) => {
   try {
-    // Get the city slug from the request parameters
+    
     const citySlug = c.req.param('slug');
-    if (!citySlug) {
-      return c.text('City slug is missing', 400);
-    }
+    
 
     // Find city by slug
     const cities = await prisma.city.findMany();
@@ -25,12 +23,12 @@ const ReadOneCityController = factory.createHandlers(async (c) => {
       return c.text('City not found', 404);
     }
 
-    // Fetch parkings associated with the city
+    
     const cityParkings = await prisma.parking.findMany({
       where: { cityId: oneCityData.id },
     });
 
-    // Map parking data to Parking instances
+    // Map parking data to Parking class
     const parkings = cityParkings.map(parkingData => {
       const location: GPS = {
         latitude: parkingData.latitude,
@@ -65,13 +63,12 @@ const ReadOneCityController = factory.createHandlers(async (c) => {
       parkingsIds
     );
 
-    // Render the view with city and parking data
+    
     const CityPage = ReadOneCityView({ city: OneCity, parkings });
-    return c.html(CityPage); // Return the rendered city view
+    return c.html(CityPage); 
 
   } catch (error) {
     console.error('Error in ReadOneCityController:', error);
-    // Handle internal server error
     return c.text('An unexpected error occurred', 500);
   }
 });

@@ -28,7 +28,7 @@ const ReadOneCityView =
             ${parkings.map(
               (parking) => html`
               <li>
-                <a href="/parking/${parking.id}">${parking.name}</a>
+                <a href="/parkings/${parking.id}">${parking.name}</a>
               </li>
           `
         )}

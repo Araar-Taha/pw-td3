@@ -1,25 +1,56 @@
 import { createFactory } from 'hono/factory';
 import ReadOneParkingView from '../../views/Parking/ReadOneParkingView';
-import lists from '../../data/staticDatabase';
-import { toSlug } from '../../utils/toSlug';
+import { GPS } from '../../types/GPS';
+import { Parking } from '../../models/Parking';
 import { prisma } from '../..';
 
 const factory = createFactory();
 
 const ReadOneParkingController = factory.createHandlers(async (c) => {
+  try {
+    const parkingId = parseInt(c.req.param('id'), 10); 
     
-    const parkingSlug = c.req.param('slug');
-    // const parking = lists.Parkings.find(p => toSlug(p.name) === parkingSlug);
-    // const foundParking = parking.findFirst(p => toSlug(p.name) === parkingSlug);
-    const parking = await prisma.parking.findMany();
-    const foundParking = parking.find(p => toSlug(p.name) === parkingSlug);
-
-    if (foundParking) {
-        const parkingPage = ReadOneParkingView({ parking : foundParking });
-        return c.html(parkingPage);
-    } else {
-        return c.text('Parking not found', 404);
+    if (isNaN(parkingId)) {
+      return c.text('Invalid parking ID', 400); 
     }
+
+    
+    const oneParkingData = await prisma.parking.findFirstOrThrow({
+      where: { id: parkingId },
+    });
+
+    // Prepare GPS location
+    const location: GPS = {
+      latitude: oneParkingData.latitude,
+      longitude: oneParkingData.longitude,
+    };
+
+    // Create an instance of Parking
+    const oneParking = new Parking(
+      oneParkingData.id,
+      oneParkingData.name,
+      oneParkingData.cityId,
+      location,
+      oneParkingData.numberOfPlaces,
+      oneParkingData.hourlyRate
+    );
+
+   
+    const parkingPage = ReadOneParkingView({ parking: oneParking });
+    return c.html(parkingPage);
+
+  } catch (error) {
+   
+    if (error instanceof Error) {
+      if (error.message === 'Record to update not found') {
+        return c.text('Parking not found', 404); 
+      }
+      console.error(error); 
+      return c.text('Internal server error', 500);  
+    
+    return c.text('Unexpected error', 500);
+  }
+}
 });
 
 export default ReadOneParkingController;

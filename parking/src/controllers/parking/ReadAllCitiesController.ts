@@ -21,7 +21,7 @@ const ReadAllCitiesControler = factory.createHandlers(async (c) => {
       },
     })
 
-    // Grouping parking by city ids
+    
     const parkingsByCityId: Record<number, number[]> = {};
     parkingsData.forEach((parking) => {
     if (!parkingsByCityId[parking.cityId]) {
@@ -46,7 +46,7 @@ const ReadAllCitiesControler = factory.createHandlers(async (c) => {
     
     const htmlView = ReadAllCitiesView({cities})
 
-    // Return the generated HTML as a response
+    
     return c.html(htmlView)
   } catch (error) {
     console.error(error)

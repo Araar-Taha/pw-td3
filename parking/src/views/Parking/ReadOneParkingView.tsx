@@ -12,7 +12,7 @@ const ReadOneParkingView = ({ parking }: ReadOneParkingViewProps) => {
         pageTitle: `Parking: ${parking.name}`,
         children: html`
             <p>Location: Latitude ${parking.location.latitude}, Longitude ${parking.location.longitude}</p>
-            <p>Number of Spots: ${parking.numberOfSpots}</p>
+            <p>Number of Spots: ${parking.numberOfPlaces}</p>
             <p>Opened: ${parking.opened ? 'Yes' : 'No'}</p>
             <p>Hourly Rate: ${parking.hourlyRate} €</p>
         `,
