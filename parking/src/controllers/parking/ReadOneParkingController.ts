@@ -32,7 +32,8 @@ const ReadOneParkingController = factory.createHandlers(async (c) => {
       oneParkingData.cityId,
       location,
       oneParkingData.numberOfPlaces,
-      oneParkingData.hourlyRate
+      oneParkingData.hourlyRate,
+      oneParkingData.opened
     );
 
    

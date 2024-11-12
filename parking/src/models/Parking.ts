@@ -15,7 +15,7 @@ export class Parking {
     hourlyRate : number; //must verify
     parkIds : number[];
 
-    constructor (id : number,name:string,city_id : number , location : GPS , numberOfSpots : number , hourlyRate : number ){
+    constructor (id : number,name:string,city_id : number , location : GPS , numberOfSpots : number , hourlyRate : number  , opened? : boolean){
         this.id = id;
         this.name = name;
         this.city_id = city_id;
@@ -26,7 +26,12 @@ export class Parking {
         }
         
         this.numberOfPlaces = numberOfSpots;
-        this.opened = false;
+        if (opened){
+            this.opened = opened;
+        }else{
+            this.opened = false;
+        }
+        
 
 
         if (hourlyRate > 0){
