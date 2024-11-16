@@ -1,0 +1,110 @@
+{
+	"id": "09f47a55-3bac-400b-8ac8-b31a37a1c2fc",
+	"name": "cities",
+	"timestamp": "2024-11-13T08:54:55.122Z",
+	"collection_id": "38873374-3caae16d-615f-4800-8581-71bf8e457e85",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-11-13T08:54:54.245Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "b7d5d01a-edda-4d1c-b3d7-f597173f6321",
+			"name": "New Request",
+			"url": "http://localhost:3000/cities",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				15
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "693c6619-4805-4bae-8d51-528564a7331a",
+			"name": "http://localhost:3000/cities/aix-la-chapelle",
+			"url": "http://localhost:3000/cities/aix-la-chapelle",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "aa274f20-b0ce-4136-8329-2102cbfca652",
+			"name": "http://localhost:3000/cities/san-cristbal-de-la-laguna",
+			"url": "http://localhost:3000/cities/san-cristbal-de-la-laguna",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				8
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "fa0946fd-4f23-4146-9c38-7bed09751861",
+			"name": "http://localhost:3000/cities/newcastle-upon-tyne",
+			"url": "http://localhost:3000/cities/newcastle-upon-tyne",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 31,
+	"collection": {
+		"requests": [
+			{
+				"id": "b7d5d01a-edda-4d1c-b3d7-f597173f6321",
+				"method": "GET"
+			},
+			{
+				"id": "693c6619-4805-4bae-8d51-528564a7331a",
+				"method": "GET"
+			},
+			{
+				"id": "aa274f20-b0ce-4136-8329-2102cbfca652",
+				"method": "GET"
+			},
+			{
+				"id": "fa0946fd-4f23-4146-9c38-7bed09751861",
+				"method": "GET"
+			}
+		]
+	}
+}

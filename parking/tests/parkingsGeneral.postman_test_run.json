@@ -1,0 +1,110 @@
+{
+	"id": "1657302d-d3db-449a-a008-e5ebd59efebb",
+	"name": "parkings",
+	"timestamp": "2024-11-13T08:52:26.264Z",
+	"collection_id": "38873374-014e3ec1-b0b0-4795-8e54-0cca3fe33bf2",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-11-13T08:52:25.448Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "1b85302a-639f-4f15-8f90-69e3b26d2496",
+			"name": "New Request",
+			"url": "http://localhost:3000/parkings",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				17
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e198f87a-4800-44c7-b26c-896abb752704",
+			"name": "http://localhost:3000/parkings/1",
+			"url": "http://localhost:3000/parkings/1",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "88015e6f-a869-471b-9a9a-7b3492d30b5d",
+			"name": "http://localhost:3000/parkings/2",
+			"url": "http://localhost:3000/parkings/2",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "6b92d0af-6c6d-42a5-8783-004edd8306b4",
+			"name": "http://localhost:3000/parkings/3",
+			"url": "http://localhost:3000/parkings/3",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 30,
+	"collection": {
+		"requests": [
+			{
+				"id": "1b85302a-639f-4f15-8f90-69e3b26d2496",
+				"method": "GET"
+			},
+			{
+				"id": "e198f87a-4800-44c7-b26c-896abb752704",
+				"method": "GET"
+			},
+			{
+				"id": "88015e6f-a869-471b-9a9a-7b3492d30b5d",
+				"method": "GET"
+			},
+			{
+				"id": "6b92d0af-6c6d-42a5-8783-004edd8306b4",
+				"method": "GET"
+			}
+		]
+	}
+}
